@@ -8,23 +8,22 @@ var Person = /** @class */ (function () {
         for (var i = 0; i < this._age.length; i++) {
             try {
                 if (typeof age !== "string") {
-                    throw new Error("argument must be a string, instead got ".concat(typeof age));
+                    throw new TypeError("argument must be a string, instead got ".concat(typeof age));
                 }
                 else if (this._age[i] === age) {
                     var container = [];
                     container = container.concat(this._name2[i], this._address[i]);
-                    console.log(container[0] + " " + container[1]);
-                    return container;
+                    return container[0] + " " + container[1];
                 }
             }
             catch (error) {
                 console.error(error);
             }
         }
-        return [];
+        return "Not Found";
     };
     return Person;
 }());
 var People = new Person(["Joe Brown"], ["29"], ["1001 Range Rd"]);
-People.infoByAge("29");
+console.log(People.infoByAge("29"));
 // People.infoByAge(29); <--- will throw error.
